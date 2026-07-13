@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Destinations — WanderAI</title>
+    <meta name="description" content="Browse trending destinations and book your next adventure with WanderAI's AI-powered booking experience.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- DESKTOP NAVIGATION -->
+    <nav class="desktop-nav nav-solid" id="desktopNav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div>
+                <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="booking.html" class="nav-link active">Explore</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <div class="dropdown" id="moreDropdown">
+                    <button class="nav-link dropdown-toggle" id="dropdownToggle">
+                        More <i data-lucide="chevron-down" class="dropdown-icon"></i>
+                    </button>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="moodboard.html" class="dropdown-item">
+                            <i data-lucide="palette" class="dropdown-item-icon"></i>
+                            <div><span class="dropdown-item-title">Brand Guide</span><span class="dropdown-item-desc">Colors, typography & mood</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i data-lucide="users" class="dropdown-item-icon"></i>
+                            <div><span class="dropdown-item-title">About Us</span><span class="dropdown-item-desc">Our mission & team</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i data-lucide="headphones" class="dropdown-item-icon"></i>
+                            <div><span class="dropdown-item-title">Support</span><span class="dropdown-item-desc">Help center & FAQ</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-actions">
+                <div class="search-container" id="searchContainer">
+                    <button class="icon-btn search-toggle" id="searchToggle" aria-label="Search"><i data-lucide="search"></i></button>
+                    <div class="search-input-wrapper" id="searchInputWrapper">
+                        <i data-lucide="search" class="search-icon-inside"></i>
+                        <input type="text" placeholder="Where do you want to go?" class="search-input" id="searchInput">
+                        <button class="search-close" id="searchClose" aria-label="Close Search"><i data-lucide="x"></i></button>
+                    </div>
+                </div>
+                <button class="icon-btn notification-btn" id="notificationBtn" aria-label="Notifications">
+                    <i data-lucide="bell"></i><span class="notification-badge">3</span>
+                </button>
+                <a href="signup.html" class="btn-primary" id="signUpBtn">Sign Up <i data-lucide="arrow-right" class="btn-icon"></i></a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Mobile Slide-Over Menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-slide-menu" id="mobileSlideMenu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo"><div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div><span class="logo-text">Wander<span class="logo-accent">AI</span></span></a>
+            <button class="icon-btn mobile-close" id="mobileClose" aria-label="Close Menu"><i data-lucide="x"></i></button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html" class="mobile-menu-link"><i data-lucide="home"></i> Home</a>
+            <a href="booking.html" class="mobile-menu-link active"><i data-lucide="compass"></i> Explore</a>
+            <a href="pricing.html" class="mobile-menu-link"><i data-lucide="credit-card"></i> Pricing</a>
+            <a href="moodboard.html" class="mobile-menu-link"><i data-lucide="palette"></i> Brand Guide</a>
+            <a href="#" class="mobile-menu-link"><i data-lucide="headphones"></i> Support</a>
+        </div>
+        <div class="mobile-menu-footer"><a href="signup.html" class="btn-primary btn-full">Sign Up Free <i data-lucide="arrow-right" class="btn-icon"></i></a></div>
+    </div>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="home"></i></div><span>Home</span></a>
+        <a href="booking.html" class="mobile-nav-item active"><div class="mobile-nav-icon-wrap"><i data-lucide="compass"></i></div><span>Explore</span></a>
+        <a href="pricing.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="credit-card"></i></div><span>Pricing</span></a>
+        <a href="moodboard.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="palette"></i></div><span>Brand</span></a>
+        <a href="signup.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="user-plus"></i></div><span>Sign Up</span></a>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <div class="page-transition">
+
+    <!-- Destinations Section -->
+    <section class="destinations-section" id="destinations" style="padding-top: calc(var(--nav-height) + 60px);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i data-lucide="map-pin"></i><span>Popular Destinations</span></div>
+                <h2 class="section-title">Trending This Season</h2>
+                <p class="section-subtitle">Handpicked destinations loved by our AI and millions of travelers worldwide. Click "Book Trip" on Santorini to experience the booking microinteraction!</p>
+            </div>
+            <div class="destinations-grid">
+                <!-- Card 1 — with booking microinteraction -->
+                <div class="destination-card card-large">
+                    <img src="images/santorini.png" alt="Santorini" class="card-image">
+                    <div class="card-overlay"></div>
+                    <div class="card-badge">Trending</div>
+                    <button class="card-wishlist" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+                    <div class="card-content">
+                        <div class="card-rating"><i data-lucide="star" class="star-icon"></i><span>4.9</span><span class="card-reviews">(2.4k reviews)</span></div>
+                        <h3 class="card-title">Santorini, Greece</h3>
+                        <p class="card-desc">Iconic sunsets & blue domes</p>
+                        <div class="card-footer">
+                            <div class="card-footer-info">
+                                <span class="card-price">From <strong>$1,299</strong></span>
+                                <span class="card-duration"><i data-lucide="clock"></i> 5 days</span>
+                            </div>
+                            <!-- BOOKING MICROINTERACTION BUTTON -->
+                            <button class="btn-book" id="demoBookBtn">
+                                <span class="btn-book-text">Book Trip</span>
+                                <div class="btn-book-spinner hidden" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="50 14" /></svg>
+                                </div>
+                                <div class="btn-book-progress-track" aria-hidden="true"><div class="btn-book-progress-fill"></div></div>
+                                <div class="btn-book-check hidden" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none"><path class="check-path" d="M4 12.6L9.3 18L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div class="btn-book-particles" aria-hidden="true"></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="images/kyoto.png" alt="Kyoto" class="card-image">
+                    <div class="card-overlay"></div>
+                    <button class="card-wishlist" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+                    <div class="card-content">
+                        <div class="card-rating"><i data-lucide="star" class="star-icon"></i><span>4.8</span><span class="card-reviews">(1.8k reviews)</span></div>
+                        <h3 class="card-title">Kyoto, Japan</h3>
+                        <p class="card-desc">Ancient temples & cherry blossoms</p>
+                        <div class="card-footer">
+                            <span class="card-price">From <strong>$1,599</strong></span>
+                            <span class="card-duration"><i data-lucide="clock"></i> 7 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="images/maldives.png" alt="Maldives" class="card-image">
+                    <div class="card-overlay"></div>
+                    <div class="card-badge badge-hot">Hot Deal</div>
+                    <button class="card-wishlist" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+                    <div class="card-content">
+                        <div class="card-rating"><i data-lucide="star" class="star-icon"></i><span>4.9</span><span class="card-reviews">(3.1k reviews)</span></div>
+                        <h3 class="card-title">Maldives</h3>
+                        <p class="card-desc">Crystal waters & overwater villas</p>
+                        <div class="card-footer">
+                            <span class="card-price">From <strong>$2,199</strong></span>
+                            <span class="card-duration"><i data-lucide="clock"></i> 6 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="images/swiss-alps.png" alt="Swiss Alps" class="card-image">
+                    <div class="card-overlay"></div>
+                    <button class="card-wishlist" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+                    <div class="card-content">
+                        <div class="card-rating"><i data-lucide="star" class="star-icon"></i><span>4.7</span><span class="card-reviews">(1.2k reviews)</span></div>
+                        <h3 class="card-title">Swiss Alps</h3>
+                        <p class="card-desc">Majestic peaks & alpine charm</p>
+                        <div class="card-footer">
+                            <span class="card-price">From <strong>$1,899</strong></span>
+                            <span class="card-duration"><i data-lucide="clock"></i> 5 days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="destination-card">
+                    <img src="images/bali.png" alt="Bali" class="card-image">
+                    <div class="card-overlay"></div>
+                    <button class="card-wishlist" aria-label="Add to wishlist"><i data-lucide="heart"></i></button>
+                    <div class="card-content">
+                        <div class="card-rating"><i data-lucide="star" class="star-icon"></i><span>4.8</span><span class="card-reviews">(2.7k reviews)</span></div>
+                        <h3 class="card-title">Bali, Indonesia</h3>
+                        <p class="card-desc">Rice terraces & tropical bliss</p>
+                        <div class="card-footer">
+                            <span class="card-price">From <strong>$999</strong></span>
+                            <span class="card-duration"><i data-lucide="clock"></i> 8 days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="trips">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag"><i data-lucide="zap"></i><span>Why WanderAI</span></div>
+                <h2 class="section-title">Travel Planning, <span class="gradient-text">Reimagined</span></h2>
+                <p class="section-subtitle">Our AI handles the complexity so you can focus on the experience.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card"><div class="feature-icon-wrap"><i data-lucide="brain"></i></div><h3>AI Itineraries</h3><p>Get custom day-by-day plans based on your interests, pace, and budget.</p></div>
+                <div class="feature-card"><div class="feature-icon-wrap"><i data-lucide="shield-check"></i></div><h3>Best Price Guarantee</h3><p>Our AI scans thousands of providers to find you the best deals, every time.</p></div>
+                <div class="feature-card"><div class="feature-icon-wrap"><i data-lucide="message-circle"></i></div><h3>24/7 AI Concierge</h3><p>Need help mid-trip? Chat with our AI concierge for instant recommendations.</p></div>
+                <div class="feature-card"><div class="feature-icon-wrap"><i data-lucide="share-2"></i></div><h3>Collaborative Trips</h3><p>Plan together with friends and family with shared itineraries and voting.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="pricing">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <div class="cta-content">
+                    <h2>Ready to plan your dream trip?</h2>
+                    <p>Join 500,000+ travelers who plan smarter with WanderAI.</p>
+                    <div class="cta-actions">
+                        <a href="signup.html" class="btn-primary btn-lg">Get Started Free <i data-lucide="arrow-right" class="btn-icon"></i></a>
+                        <a href="pricing.html" class="btn-secondary"><i data-lucide="credit-card" class="btn-icon-left"></i>View Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </div><!-- /page-transition -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo"><div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div><span class="logo-text">Wander<span class="logo-accent">AI</span></span></a>
+                    <p>AI-powered travel planning for the modern explorer.</p>
+                </div>
+                <div class="footer-col"><h4>Product</h4><a href="booking.html">Explore</a><a href="pricing.html">Pricing</a><a href="signup.html">Sign Up</a></div>
+                <div class="footer-col"><h4>Company</h4><a href="pricing.html#about">About</a><a href="moodboard.html">Brand Guide</a><a href="#">Careers</a></div>
+                <div class="footer-col"><h4>Support</h4><a href="#">Help Center</a><a href="#">Contact</a><a href="#">Privacy</a></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 WanderAI. All rights reserved.</p></div>
+        </div>
+    </footer>
+
+    <!-- BOOKING SUCCESS OVERLAY -->
+    <div class="booking-overlay" id="bookingOverlay"></div>
+    <div class="booking-success-toast" id="bookingSuccessToast">
+        <div class="toast-glow"></div>
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path class="toast-check-path" d="M4 12.6L9.3 18L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="toast-body">
+            <span class="toast-title">Your Trip Has Been Successfully Booked!</span>
+            <span class="toast-subtitle">Redirecting to your booking summary…</span>
+        </div>
+        <div class="toast-progress-bar"><div class="toast-progress-fill"></div></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
