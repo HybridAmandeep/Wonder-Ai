@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Destinations — WanderAI</title>
-    <meta name="description" content="Browse trending destinations and book your next adventure with WanderAI's AI-powered booking experience.">
+    <title>Secure Checkout — WanderAI</title>
+    <meta name="description" content="Complete your booking with WanderAI's secure checkout.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,7 +78,7 @@
         </div>
     </nav>
 
-    <!-- Mobile Slide-Over Menu -->
+    <!-- Mobile Slide-Over -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-slide-menu" id="mobileSlideMenu">
         <div class="mobile-menu-header">
@@ -108,124 +108,119 @@
 
     <!-- PAGE CONTENT -->
     <div class="page-transition">
-        <div class="explore-main-container">
-            <!-- Sidebar Filters -->
-            <aside class="sidebar-filters">
-                <div class="filter-title">
-                    <span>Filters</span>
-                    <button class="icon-btn" id="clearFiltersBtn" style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">Reset</button>
-                </div>
-                <div class="filter-group">
-                    <label for="filterSearch">Search keyword</label>
-                    <input type="text" id="filterSearch" class="filter-text-input" placeholder="e.g. Greece, beach...">
-                </div>
-                <div class="filter-group">
-                    <label for="filterCategory">Category</label>
-                    <select id="filterCategory" class="filter-select">
-                        <option value="all">All Categories</option>
-                        <option value="beach">Beach & Coastal</option>
-                        <option value="adventure">Adventure & Outdoors</option>
-                        <option value="nature">Nature & Parks</option>
-                        <option value="culture">Historical & Cultural</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterPrice">Max Budget <span class="range-val" id="priceRangeVal">$2,500</span></label>
-                    <input type="range" id="filterPrice" min="800" max="2500" step="100" value="2500" style="width: 100%;">
-                </div>
-                <div class="filter-group">
-                    <label for="filterDuration">Max Duration <span class="range-val" id="durationRangeVal">8 days</span></label>
-                    <input type="range" id="filterDuration" min="4" max="8" step="1" value="8" style="width: 100%;">
-                </div>
-            </aside>
+        <div class="container" style="padding-top: calc(var(--nav-height) + 40px); padding-bottom: 80px;">
+            <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+                <h1 class="section-title" style="margin-left: 0;">Secure Checkout</h1>
+                <p class="section-subtitle" style="margin-left: 0;">Confirm your itinerary and complete your booking with our simulated payment engine.</p>
+            </div>
 
-            <!-- Destinations Display -->
-            <main class="explore-main-content">
-                <div class="section-header" style="margin-bottom: 32px; text-align: left;">
-                    <div class="section-tag"><i data-lucide="map-pin"></i><span>Popular Destinations</span></div>
-                    <h2 class="section-title" style="margin-left: 0;">Trending This Season</h2>
-                    <p class="section-subtitle" style="margin-left: 0;">Handpicked destinations loved by our AI and millions of travelers worldwide. Select a destination to see dynamic details and live weather.</p>
-                </div>
-                <div class="destinations-grid-dynamic" id="dynamicDestGrid">
-                    <!-- Cards will be dynamically rendered here -->
-                </div>
-            </main>
-        </div>
-    </div>
-
-    <!-- DETAIL MODAL OVERLAY -->
-    <div class="modal-overlay" id="detailModalOverlay">
-        <div class="modal-content">
-            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal"><i data-lucide="x"></i></button>
-            <img src="" alt="" class="modal-hero-img" id="modalHeroImg">
-            <div class="modal-body">
-                <div class="modal-title-row">
-                    <h2 id="modalTitle">Destination Name</h2>
-                    <span class="modal-price-tag" id="modalPrice">$0</span>
-                </div>
-                <div class="modal-meta-row">
-                    <span id="modalDuration"><i data-lucide="clock" class="icon-inline"></i> 0 days</span>
-                    <span>•</span>
-                    <span id="modalRating"><i data-lucide="star" class="icon-inline" style="color: #FBBF24; fill: #FBBF24;"></i> 0.0</span>
-                    <span>•</span>
-                    <span id="modalSeason">Best Season: May to October</span>
-                </div>
-
-                <!-- Weather widget -->
-                <div class="weather-widget">
-                    <div class="weather-left">
-                        <span class="weather-temp" id="weatherTemp">--°C</span>
-                        <div class="weather-info-block">
-                            <span class="weather-info-desc" id="weatherDesc">Loading...</span>
-                            <span class="weather-info-source" id="weatherSource">live API</span>
+            <div class="checkout-grid">
+                <!-- Left Side: Billing and Payment Details -->
+                <div class="checkout-card">
+                    <h3 class="checkout-section-title">Billing Information</h3>
+                    <form id="checkoutPaymentForm" novalidate>
+                        <div class="input-group">
+                            <label for="billName">Full Name</label>
+                            <input type="text" id="billName" placeholder="Enter your full name" required>
+                            <div class="error-message" id="billName-error"></div>
                         </div>
-                        <img src="" alt="Weather" class="weather-icon-img" id="weatherIcon">
-                    </div>
-                    <div class="weather-right">
-                        <div>Feels like: <strong id="weatherFeels">--°C</strong></div>
-                        <div>Humidity: <strong id="weatherHumidity">--%</strong></div>
-                        <div>Wind: <strong id="weatherWind">-- km/h</strong></div>
-                    </div>
+
+                        <div class="input-group">
+                            <label for="billEmail">Email Address</label>
+                            <input type="email" id="billEmail" placeholder="Enter your email" required>
+                            <div class="error-message" id="billEmail-error"></div>
+                        </div>
+
+                        <h3 class="checkout-section-title" style="margin-top: 32px;">Demo Payment Card</h3>
+                        <p style="font-size: 0.8rem; color: var(--gray-500); margin-bottom: 16px;">This is a simulated sandbox. Enter any mock card numbers to test the transaction.</p>
+
+                        <div class="input-group">
+                            <label for="cardNum">Card Number</label>
+                            <input type="text" id="cardNum" placeholder="4111 2222 3333 4444" maxlength="19" required>
+                            <div class="error-message" id="cardNum-error"></div>
+                        </div>
+
+                        <div class="payment-grid">
+                            <div class="input-group">
+                                <label for="cardExpiry">Expiration Date</label>
+                                <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                                <div class="error-message" id="cardExpiry-error"></div>
+                            </div>
+                            <div class="input-group">
+                                <label for="cardCvv">CVV</label>
+                                <input type="password" id="cardCvv" placeholder="123" maxlength="3" required>
+                                <div class="error-message" id="cardCvv-error"></div>
+                            </div>
+                        </div>
+
+                        <!-- Proceed Button -->
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 24px;" id="payBtn">
+                            <span class="btn-text">Pay & Confirm Booking</span>
+                            <span class="loader" style="display: none;"></span>
+                        </button>
+                    </form>
                 </div>
 
-                <p class="modal-desc" id="modalDesc">Detailed description here.</p>
-
-                <div class="modal-grid-columns">
-                    <div class="modal-activities">
-                        <h3>Included Activities</h3>
-                        <ul class="activity-list" id="modalActivityList">
-                            <!-- Activities dynamic -->
-                        </ul>
+                <!-- Right Side: Booking Summary Card -->
+                <div class="checkout-card" style="height: fit-content;">
+                    <h3 class="checkout-section-title">Trip Summary</h3>
+                    
+                    <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                        <img src="" alt="" id="summaryImg" style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--radius-md);">
+                        <div>
+                            <h4 id="summaryTitle" style="font-size: 1.2rem; color: var(--gray-900);">Destination</h4>
+                            <p id="summaryCountry" style="color: var(--gray-500); font-size: 0.9rem;">Country</p>
+                            <div style="margin-top: 8px; font-size: 0.85rem; color: var(--primary); font-weight: 600;" id="summaryDuration">0 days</div>
+                        </div>
                     </div>
-                    <div class="modal-booking-panel">
-                        <h3>Plan Your Trip</h3>
-                        <form id="modalBookingForm">
-                            <div class="booking-form-group">
-                                <label for="bookingStart">Departure Date</label>
-                                <input type="date" id="bookingStart" class="booking-form-input" required>
-                            </div>
-                            <div class="booking-form-group">
-                                <label for="bookingEnd">Return Date</label>
-                                <input type="date" id="bookingEnd" class="booking-form-input" required>
-                            </div>
-                            <div class="booking-form-group">
-                                <label for="bookingGuests">Travelers</label>
-                                <input type="number" id="bookingGuests" class="booking-form-input" min="1" max="10" value="1" required>
-                            </div>
-                            <div class="booking-total-calc">
-                                <span>Total Price:</span>
-                                <span id="bookingTotal">$0</span>
-                            </div>
-                            
-                            <!-- Microinteraction wrapper or simple functional booking btn -->
-                            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;" id="modalSubmitBtn">
-                                Proceed to Checkout <i data-lucide="arrow-right" class="btn-icon"></i>
-                            </button>
-                        </form>
+
+                    <div class="checkout-summary-item">
+                        <span>Check-In:</span>
+                        <strong id="summaryStart">--</strong>
+                    </div>
+                    <div class="checkout-summary-item">
+                        <span>Check-Out:</span>
+                        <strong id="summaryEnd">--</strong>
+                    </div>
+                    <div class="checkout-summary-item" style="margin-bottom: 24px;">
+                        <span>Travelers:</span>
+                        <strong id="summaryGuests">1</strong>
+                    </div>
+
+                    <div class="checkout-summary-item">
+                        <span>Base Rate:</span>
+                        <span id="summaryBasePrice">$0</span>
+                    </div>
+                    <div class="checkout-summary-item">
+                        <span>AI Plan Discount:</span>
+                        <span id="summaryDiscount" style="color: var(--success); font-weight: 600;">-$0</span>
+                    </div>
+                    <div class="checkout-summary-item">
+                        <span>Taxes & Service Fees:</span>
+                        <span id="summaryTaxes">$0</span>
+                    </div>
+
+                    <div class="checkout-summary-item total">
+                        <span>Total Price:</span>
+                        <span id="summaryTotal">$0</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- BOOKING SUCCESS OVERLAY -->
+    <div class="booking-overlay" id="bookingOverlay"></div>
+    <div class="booking-success-toast" id="bookingSuccessToast">
+        <div class="toast-glow"></div>
+        <div class="toast-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path class="toast-check-path" d="M4 12.6L9.3 18L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="toast-body">
+            <span class="toast-title">Payment Successful!</span>
+            <span class="toast-subtitle">Your trip is confirmed. Redirecting to dashboard...</span>
+        </div>
+        <div class="toast-progress-bar"><div class="toast-progress-fill"></div></div>
     </div>
 
     <!-- Footer -->
@@ -246,20 +241,6 @@
             <div class="footer-bottom"><p>&copy; 2026 WanderAI. All rights reserved.</p></div>
         </div>
     </footer>
-
-    <!-- BOOKING SUCCESS OVERLAY -->
-    <div class="booking-overlay" id="bookingOverlay"></div>
-    <div class="booking-success-toast" id="bookingSuccessToast">
-        <div class="toast-glow"></div>
-        <div class="toast-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path class="toast-check-path" d="M4 12.6L9.3 18L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="toast-body">
-            <span class="toast-title">Your Trip Has Been Successfully Booked!</span>
-            <span class="toast-subtitle">Redirecting to your booking summary…</span>
-        </div>
-        <div class="toast-progress-bar"><div class="toast-progress-fill"></div></div>
-    </div>
 
     <script src="data.js"></script>
     <script src="script.js"></script>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WanderAI — AI Travel Planner | Discover Your Next Adventure</title>
     <meta name="description" content="AI-powered travel planning that builds personalized itineraries, budgets, packing lists, and weather-aware travel schedules in seconds.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,9 +17,7 @@
     <nav class="desktop-nav" id="desktopNav">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-mark">
-                    <i data-lucide="compass" class="logo-icon"></i>
-                </div>
+                <img src="assets/logo.png" alt="WanderAI Logo" class="logo-img">
                 <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
             </a>
 
@@ -66,21 +64,34 @@
                     <div class="search-input-wrapper" id="searchInputWrapper">
                         <i data-lucide="search" class="search-icon-inside"></i>
                         <input type="text" placeholder="Where do you want to go?" class="search-input" id="searchInput">
+                        <div class="search-results-overlay" id="searchResultsOverlay"></div>
                         <button class="search-close" id="searchClose" aria-label="Close Search">
                             <i data-lucide="x"></i>
                         </button>
                     </div>
                 </div>
 
-                <button class="icon-btn notification-btn" id="notificationBtn" aria-label="Notifications">
-                    <i data-lucide="bell"></i>
-                    <span class="notification-badge">3</span>
-                </button>
+                <!-- Notification Bell -->
+                <div class="notif-dropdown-wrapper" id="navNotifWrapper">
+                    <button class="icon-btn" id="navNotifBtn" aria-label="Notifications">
+                        <i data-lucide="bell"></i>
+                        <span class="notif-badge" id="navNotifBadge" style="display: none;">0</span>
+                    </button>
+                    <div class="notif-menu" id="navNotifMenu">
+                        <div class="notif-header">
+                            <h4>Notifications</h4>
+                            <button class="notif-clear-btn" id="notifClearBtn">Clear All</button>
+                        </div>
+                        <div class="notif-list" id="notifList"></div>
+                    </div>
+                </div>
 
-                <a href="signup.html" class="btn-primary" id="signUpBtn">
-                    Sign Up
-                    <i data-lucide="arrow-right" class="btn-icon"></i>
-                </a>
+                <div id="navUserArea" class="flex-center">
+                    <a href="signup.html" class="btn-primary" id="signUpBtn">
+                        Sign Up
+                        <i data-lucide="arrow-right" class="btn-icon"></i>
+                    </a>
+                </div>
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
@@ -96,9 +107,7 @@
     <div class="mobile-slide-menu" id="mobileSlideMenu">
         <div class="mobile-menu-header">
             <a href="index.html" class="logo">
-                <div class="logo-mark">
-                    <i data-lucide="compass" class="logo-icon"></i>
-                </div>
+                <img src="assets/logo.png" alt="WanderAI Logo" class="logo-img">
                 <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
             </a>
             <button class="icon-btn mobile-close" id="mobileClose" aria-label="Close Menu">
@@ -215,11 +224,11 @@
         <div class="container">
             <p class="trusted-label">Trusted by travelers from</p>
             <div class="trusted-logos">
-                <span class="trusted-logo">Google</span>
-                <span class="trusted-logo">Apple</span>
-                <span class="trusted-logo">Netflix</span>
-                <span class="trusted-logo">Spotify</span>
-                <span class="trusted-logo">Airbnb</span>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="trusted-logo-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" class="trusted-logo-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="trusted-logo-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify" class="trusted-logo-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg" alt="Airbnb" class="trusted-logo-img">
             </div>
         </div>
     </section>
@@ -392,9 +401,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <div class="logo-mark">
-                            <i data-lucide="compass" class="logo-icon"></i>
-                        </div>
+                        <img src="assets/footer-logo.png" alt="WanderAI Logo" class="logo-img">
                         <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
                     </a>
                     <p>AI-powered travel planning for the modern explorer.</p>
@@ -424,6 +431,7 @@
         </div>
     </footer>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>
 </body>

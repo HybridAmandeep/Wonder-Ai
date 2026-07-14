@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Destinations — WanderAI</title>
-    <meta name="description" content="Browse trending destinations and book your next adventure with WanderAI's AI-powered booking experience.">
+    <title>My Wishlist — WanderAI</title>
+    <meta name="description" content="View your saved travel destinations and plan your next trip.">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
             </a>
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="booking.html" class="nav-link active">Explore</a>
+                <a href="booking.html" class="nav-link">Explore</a>
                 <a href="pricing.html" class="nav-link">Pricing</a>
                 <div class="dropdown" id="moreDropdown">
                     <button class="nav-link dropdown-toggle" id="dropdownToggle">
@@ -78,7 +78,7 @@
         </div>
     </nav>
 
-    <!-- Mobile Slide-Over Menu -->
+    <!-- Mobile Slide-Over -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-slide-menu" id="mobileSlideMenu">
         <div class="mobile-menu-header">
@@ -90,7 +90,7 @@
         </div>
         <div class="mobile-menu-links">
             <a href="index.html" class="mobile-menu-link"><i data-lucide="home"></i> Home</a>
-            <a href="booking.html" class="mobile-menu-link active"><i data-lucide="compass"></i> Explore</a>
+            <a href="booking.html" class="mobile-menu-link"><i data-lucide="compass"></i> Explore</a>
             <a href="pricing.html" class="mobile-menu-link"><i data-lucide="credit-card"></i> Pricing</a>
             <a href="moodboard.html" class="mobile-menu-link"><i data-lucide="palette"></i> Brand Guide</a>
         </div>
@@ -100,7 +100,7 @@
     <!-- Mobile Bottom Nav -->
     <nav class="mobile-nav" id="mobileNav">
         <a href="index.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="home"></i></div><span>Home</span></a>
-        <a href="booking.html" class="mobile-nav-item active"><div class="mobile-nav-icon-wrap"><i data-lucide="compass"></i></div><span>Explore</span></a>
+        <a href="booking.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="compass"></i></div><span>Explore</span></a>
         <a href="pricing.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="credit-card"></i></div><span>Pricing</span></a>
         <a href="moodboard.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="palette"></i></div><span>Brand</span></a>
         <a href="signup.html" class="mobile-nav-item"><div class="mobile-nav-icon-wrap"><i data-lucide="user-plus"></i></div><span>Sign Up</span></a>
@@ -108,48 +108,27 @@
 
     <!-- PAGE CONTENT -->
     <div class="page-transition">
-        <div class="explore-main-container">
-            <!-- Sidebar Filters -->
-            <aside class="sidebar-filters">
-                <div class="filter-title">
-                    <span>Filters</span>
-                    <button class="icon-btn" id="clearFiltersBtn" style="font-size: 0.8rem; color: var(--primary); font-weight: 600;">Reset</button>
-                </div>
-                <div class="filter-group">
-                    <label for="filterSearch">Search keyword</label>
-                    <input type="text" id="filterSearch" class="filter-text-input" placeholder="e.g. Greece, beach...">
-                </div>
-                <div class="filter-group">
-                    <label for="filterCategory">Category</label>
-                    <select id="filterCategory" class="filter-select">
-                        <option value="all">All Categories</option>
-                        <option value="beach">Beach & Coastal</option>
-                        <option value="adventure">Adventure & Outdoors</option>
-                        <option value="nature">Nature & Parks</option>
-                        <option value="culture">Historical & Cultural</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label for="filterPrice">Max Budget <span class="range-val" id="priceRangeVal">$2,500</span></label>
-                    <input type="range" id="filterPrice" min="800" max="2500" step="100" value="2500" style="width: 100%;">
-                </div>
-                <div class="filter-group">
-                    <label for="filterDuration">Max Duration <span class="range-val" id="durationRangeVal">8 days</span></label>
-                    <input type="range" id="filterDuration" min="4" max="8" step="1" value="8" style="width: 100%;">
-                </div>
-            </aside>
+        <div class="container" style="padding-top: calc(var(--nav-height) + 40px); padding-bottom: 80px; min-height: 70vh;">
+            <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+                <div class="section-tag"><i data-lucide="heart" style="color: var(--accent); fill: var(--accent);"></i><span>My Favorites</span></div>
+                <h1 class="section-title" style="margin-left: 0;">My Wishlist</h1>
+                <p class="section-subtitle" style="margin-left: 0;">Manage your dream destinations and start planning when you are ready.</p>
+            </div>
 
-            <!-- Destinations Display -->
-            <main class="explore-main-content">
-                <div class="section-header" style="margin-bottom: 32px; text-align: left;">
-                    <div class="section-tag"><i data-lucide="map-pin"></i><span>Popular Destinations</span></div>
-                    <h2 class="section-title" style="margin-left: 0;">Trending This Season</h2>
-                    <p class="section-subtitle" style="margin-left: 0;">Handpicked destinations loved by our AI and millions of travelers worldwide. Select a destination to see dynamic details and live weather.</p>
+            <!-- Grid for wishlisted cards -->
+            <div class="destinations-grid-dynamic" id="wishlistGrid">
+                <!-- Will be dynamically populated -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="wishlistEmptyState" style="display: none; text-align: center; padding: 80px 24px;">
+                <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--gray-100); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 24px; color: var(--gray-400);">
+                    <i data-lucide="heart" style="width: 40px; height: 40px;"></i>
                 </div>
-                <div class="destinations-grid-dynamic" id="dynamicDestGrid">
-                    <!-- Cards will be dynamically rendered here -->
-                </div>
-            </main>
+                <h3 style="font-size: 1.3rem; font-weight: 700; color: var(--gray-900); margin-bottom: 8px;">Your wishlist is empty</h3>
+                <p style="color: var(--gray-500); margin-bottom: 24px; max-width: 320px; margin-left: auto; margin-right: auto;">Explore our curated destinations and save your favorites to plan later.</p>
+                <a href="booking.html" class="btn-primary">Explore Destinations</a>
+            </div>
         </div>
     </div>
 
@@ -216,8 +195,6 @@
                                 <span>Total Price:</span>
                                 <span id="bookingTotal">$0</span>
                             </div>
-                            
-                            <!-- Microinteraction wrapper or simple functional booking btn -->
                             <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;" id="modalSubmitBtn">
                                 Proceed to Checkout <i data-lucide="arrow-right" class="btn-icon"></i>
                             </button>
@@ -246,20 +223,6 @@
             <div class="footer-bottom"><p>&copy; 2026 WanderAI. All rights reserved.</p></div>
         </div>
     </footer>
-
-    <!-- BOOKING SUCCESS OVERLAY -->
-    <div class="booking-overlay" id="bookingOverlay"></div>
-    <div class="booking-success-toast" id="bookingSuccessToast">
-        <div class="toast-glow"></div>
-        <div class="toast-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path class="toast-check-path" d="M4 12.6L9.3 18L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="toast-body">
-            <span class="toast-title">Your Trip Has Been Successfully Booked!</span>
-            <span class="toast-subtitle">Redirecting to your booking summary…</span>
-        </div>
-        <div class="toast-progress-bar"><div class="toast-progress-fill"></div></div>
-    </div>
 
     <script src="data.js"></script>
     <script src="script.js"></script>

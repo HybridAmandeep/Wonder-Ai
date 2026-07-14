@@ -17,7 +17,7 @@
     <nav class="desktop-nav nav-solid" id="desktopNav">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div>
+                <img src="assets/logo.png" alt="WanderAI Logo" class="logo-img">
                 <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
             </a>
             <div class="nav-links" id="navLinks">
@@ -29,9 +29,18 @@
                         More <i data-lucide="chevron-down" class="dropdown-icon"></i>
                     </button>
                     <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="moodboard.html" class="dropdown-item"><i data-lucide="palette" class="dropdown-item-icon"></i><div><span class="dropdown-item-title">Brand Guide</span><span class="dropdown-item-desc">Colors, typography & mood</span></div></a>
-                        <a href="#" class="dropdown-item"><i data-lucide="users" class="dropdown-item-icon"></i><div><span class="dropdown-item-title">About Us</span><span class="dropdown-item-desc">Our mission & team</span></div></a>
-                        <a href="#" class="dropdown-item"><i data-lucide="headphones" class="dropdown-item-icon"></i><div><span class="dropdown-item-title">Support</span><span class="dropdown-item-desc">Help center & FAQ</span></div></a>
+                        <a href="moodboard.html" class="dropdown-item">
+                            <i data-lucide="palette" class="dropdown-item-icon"></i>
+                            <div><span class="dropdown-item-title">Brand Guide</span><span class="dropdown-item-desc">Colors, typography & mood</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i data-lucide="users" class="dropdown-item-icon"></i>
+                            <div><span class="dropdown-item-title">About Us</span><span class="dropdown-item-desc">Our mission & team</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i data-lucide="headphones" class="dropdown-item-icon"></i>
+                            <div><span class="dropdown-item-title">Support</span><span class="dropdown-item-desc">Help center & FAQ</span></div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -41,10 +50,29 @@
                     <div class="search-input-wrapper" id="searchInputWrapper">
                         <i data-lucide="search" class="search-icon-inside"></i>
                         <input type="text" placeholder="Where do you want to go?" class="search-input" id="searchInput">
+                        <div class="search-results-overlay" id="searchResultsOverlay"></div>
                         <button class="search-close" id="searchClose" aria-label="Close Search"><i data-lucide="x"></i></button>
                     </div>
                 </div>
-                <a href="signup.html" class="btn-primary" id="signUpBtn">Sign Up <i data-lucide="arrow-right" class="btn-icon"></i></a>
+
+                <!-- Notification Bell -->
+                <div class="notif-dropdown-wrapper" id="navNotifWrapper">
+                    <button class="icon-btn" id="navNotifBtn" aria-label="Notifications">
+                        <i data-lucide="bell"></i>
+                        <span class="notif-badge" id="navNotifBadge" style="display: none;">0</span>
+                    </button>
+                    <div class="notif-menu" id="navNotifMenu">
+                        <div class="notif-header">
+                            <h4>Notifications</h4>
+                            <button class="notif-clear-btn" id="notifClearBtn">Clear All</button>
+                        </div>
+                        <div class="notif-list" id="notifList"></div>
+                    </div>
+                </div>
+
+                <div id="navUserArea" class="flex-center">
+                    <a href="signup.html" class="btn-primary" id="signUpBtn">Sign Up <i data-lucide="arrow-right" class="btn-icon"></i></a>
+                </div>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
         </div>
@@ -54,7 +82,10 @@
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-slide-menu" id="mobileSlideMenu">
         <div class="mobile-menu-header">
-            <a href="index.html" class="logo"><div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div><span class="logo-text">Wander<span class="logo-accent">AI</span></span></a>
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="WanderAI Logo" class="logo-img">
+                <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
+            </a>
             <button class="icon-btn mobile-close" id="mobileClose" aria-label="Close Menu"><i data-lucide="x"></i></button>
         </div>
         <div class="mobile-menu-links">
@@ -77,127 +108,98 @@
 
     <!-- PAGE CONTENT -->
     <div class="page-transition">
-
-    <!-- Pricing Section -->
-    <section class="pricing-page-section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i data-lucide="credit-card"></i><span>Pricing</span></div>
-                <h2 class="section-title">Start free, upgrade when travel gets serious.</h2>
-                <p class="section-subtitle">Every plan comes with AI-powered itineraries, weather integration, and offline access.</p>
-            </div>
-
-            <div class="pricing-grid">
-                <article class="price-card">
-                    <h3>Explorer</h3>
-                    <p class="price">$0<span>/mo</span></p>
-                    <p>For trying WanderAI on your next weekend trip.</p>
-                    <ul>
-                        <li>2 AI itineraries per month</li>
-                        <li>Basic budget planner</li>
-                        <li>Weather summary</li>
-                    </ul>
-                    <a href="signup.html" class="btn-secondary" style="text-align:center;justify-content:center;">Start Free</a>
-                </article>
-
-                <article class="price-card featured-price">
-                    <p class="plan-tag">Most popular</p>
-                    <h3>Nomad</h3>
-                    <p class="price">$12<span>/mo</span></p>
-                    <p>For students, backpackers, and frequent leisure travelers.</p>
-                    <ul>
-                        <li>Unlimited AI itineraries</li>
-                        <li>Smart packing lists</li>
-                        <li>Offline itinerary access</li>
-                    </ul>
-                    <a href="signup.html" class="btn-primary" style="text-align:center;justify-content:center;">Choose Nomad</a>
-                </article>
-
-                <article class="price-card">
-                    <h3>Atlas</h3>
-                    <p class="price">$29<span>/mo</span></p>
-                    <p>For families, business travelers, and multi-city planning.</p>
-                    <ul>
-                        <li>Shared trip workspaces</li>
-                        <li>Real-time route adjustments</li>
-                        <li>Priority planning support</li>
-                    </ul>
-                    <a href="signup.html" class="btn-secondary" style="text-align:center;justify-content:center;">Choose Atlas</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag"><i data-lucide="message-square"></i><span>Testimonials</span></div>
-                <h2 class="section-title">Built for every kind of traveler.</h2>
-                <p class="section-subtitle">Hear from real travelers who planned smarter with WanderAI.</p>
-            </div>
-
-            <div class="testimonial-grid">
-                <article class="testimonial-card">
-                    <img src="assets/avatar-maya.svg" alt="Maya Chen">
-                    <blockquote>"WanderAI turned a messy Europe backpacking idea into a route I could actually afford."</blockquote>
-                    <h3>Maya Chen</h3>
-                    <span class="role">Student traveler</span>
-                </article>
-                <article class="testimonial-card">
-                    <img src="assets/avatar-owen.svg" alt="Owen Brooks">
-                    <blockquote>"The weather-aware schedule saved our family trip when two beach days became museum days."</blockquote>
-                    <h3>Owen Brooks</h3>
-                    <span class="role">Family planner</span>
-                </article>
-                <article class="testimonial-card">
-                    <img src="assets/avatar-nadia.svg" alt="Nadia Rao">
-                    <blockquote>"I use it between meetings to find efficient routes, quiet cafes, and realistic transfer times."</blockquote>
-                    <h3>Nadia Rao</h3>
-                    <span class="role">Business traveler</span>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="about-layout">
-                <div>
-                    <p class="eyebrow">About</p>
-                    <h2>Travel planning for people who want the trip, not the spreadsheet.</h2>
+        <!-- Pricing Section -->
+        <section class="pricing-page-section" id="pricing" style="padding-top: calc(var(--nav-height) + 60px);">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag"><i data-lucide="credit-card"></i><span>Pricing Plans</span></div>
+                    <h2 class="section-title">Start free, upgrade when travel gets serious.</h2>
+                    <p class="section-subtitle">Every plan comes with AI-powered itineraries, weather integration, and offline access.</p>
                 </div>
-                <p>WanderAI combines itinerary generation, budget awareness, packing intelligence, and destination context into one focused travel workspace for solo explorers, students, families, and business travelers.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <div class="cta-glow"></div>
-                <div class="cta-content">
-                    <h2>Ready to plan your dream trip?</h2>
-                    <p>Join 500,000+ travelers who plan smarter with WanderAI.</p>
-                    <div class="cta-actions">
-                        <a href="signup.html" class="btn-primary btn-lg">Get Started Free <i data-lucide="arrow-right" class="btn-icon"></i></a>
-                        <a href="booking.html" class="btn-secondary"><i data-lucide="compass" class="btn-icon-left"></i>Explore Destinations</a>
+                <div class="pricing-grid">
+                    <article class="price-card">
+                        <h3>Explorer</h3>
+                        <p class="price">$0<span>/mo</span></p>
+                        <p>For trying WanderAI on your next weekend trip.</p>
+                        <ul>
+                            <li><i data-lucide="check" class="check-icon"></i> 2 AI itineraries per month</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Basic budget planner</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Weather summary</li>
+                        </ul>
+                        <button class="btn-secondary select-plan-btn" data-plan="Explorer ($0/mo)" style="width: 100%; justify-content: center; margin-top: auto;">Select Explorer</button>
+                    </article>
+
+                    <article class="price-card popular">
+                        <div class="card-badge">Most Popular</div>
+                        <h3>Nomad</h3>
+                        <p class="price">$12<span>/mo</span></p>
+                        <p>For students, backpackers, and frequent leisure travelers.</p>
+                        <ul>
+                            <li><i data-lucide="check" class="check-icon"></i> Unlimited AI itineraries</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Smart packing lists</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Offline itinerary access</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Multi-city planning</li>
+                        </ul>
+                        <button class="btn-primary select-plan-btn" data-plan="Nomad ($12/mo)" style="width: 100%; justify-content: center; margin-top: auto;">Select Nomad</button>
+                    </article>
+
+                    <article class="price-card">
+                        <h3>Atlas</h3>
+                        <p class="price">$29<span>/mo</span></p>
+                        <p>For families, business travelers, and multi-city planning.</p>
+                        <ul>
+                            <li><i data-lucide="check" class="check-icon"></i> Shared trip workspaces</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Real-time route adjustments</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Priority planning support</li>
+                            <li><i data-lucide="check" class="check-icon"></i> Concierge assistance</li>
+                        </ul>
+                        <button class="btn-secondary select-plan-btn" data-plan="Atlas ($29/mo)" style="width: 100%; justify-content: center; margin-top: auto;">Select Atlas</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-section" style="background: var(--gray-50); padding: 80px 0;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Loved by Travelers</h2>
+                    <p class="section-subtitle">Read how WanderAI helps explorers plan their perfect journeys.</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"WanderAI saved me hours of planning for my trip to Kyoto. The cherry blossom timing advice was spot on!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <strong>Sarah M.</strong>
+                                <span>Explorer Plan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The Nomad plan is worth every penny. Being able to access maps and day plans offline in the Swiss Alps was a lifesaver."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <strong>Alex K.</strong>
+                                <span>Nomad Plan</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    </div><!-- /page-transition -->
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo"><div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div><span class="logo-text">Wander<span class="logo-accent">AI</span></span></a>
+                    <a href="index.html" class="logo">
+                        <img src="assets/footer-logo.png" alt="WanderAI Logo" class="logo-img">
+                        <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
+                    </a>
                     <p>AI-powered travel planning for the modern explorer.</p>
                 </div>
                 <div class="footer-col"><h4>Product</h4><a href="booking.html">Explore</a><a href="pricing.html">Pricing</a><a href="signup.html">Sign Up</a></div>
@@ -208,6 +210,7 @@
         </div>
     </footer>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>
 </body>

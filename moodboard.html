@@ -18,7 +18,7 @@
     <nav class="desktop-nav nav-solid" id="desktopNav">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div>
+                <img src="assets/logo.png" alt="WanderAI Logo" class="logo-img">
                 <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
             </a>
             <div class="nav-links" id="navLinks">
@@ -45,10 +45,29 @@
                     <div class="search-input-wrapper" id="searchInputWrapper">
                         <i data-lucide="search" class="search-icon-inside"></i>
                         <input type="text" placeholder="Where do you want to go?" class="search-input" id="searchInput">
+                        <div class="search-results-overlay" id="searchResultsOverlay"></div>
                         <button class="search-close" id="searchClose" aria-label="Close Search"><i data-lucide="x"></i></button>
                     </div>
                 </div>
-                <a href="signup.html" class="btn-primary" id="signUpBtn">Sign Up <i data-lucide="arrow-right" class="btn-icon"></i></a>
+
+                <!-- Notification Bell -->
+                <div class="notif-dropdown-wrapper" id="navNotifWrapper">
+                    <button class="icon-btn" id="navNotifBtn" aria-label="Notifications">
+                        <i data-lucide="bell"></i>
+                        <span class="notif-badge" id="navNotifBadge" style="display: none;">0</span>
+                    </button>
+                    <div class="notif-menu" id="navNotifMenu">
+                        <div class="notif-header">
+                            <h4>Notifications</h4>
+                            <button class="notif-clear-btn" id="notifClearBtn">Clear All</button>
+                        </div>
+                        <div class="notif-list" id="notifList"></div>
+                    </div>
+                </div>
+
+                <div id="navUserArea" class="flex-center">
+                    <a href="signup.html" class="btn-primary" id="signUpBtn">Sign Up <i data-lucide="arrow-right" class="btn-icon"></i></a>
+                </div>
             </div>
             <button class="hamburger" id="hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button>
         </div>
@@ -58,7 +77,10 @@
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-slide-menu" id="mobileSlideMenu">
         <div class="mobile-menu-header">
-            <a href="index.html" class="logo"><div class="logo-mark"><i data-lucide="compass" class="logo-icon"></i></div><span class="logo-text">Wander<span class="logo-accent">AI</span></span></a>
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="WanderAI Logo" class="logo-img">
+                <span class="logo-text">Wander<span class="logo-accent">AI</span></span>
+            </a>
             <button class="icon-btn mobile-close" id="mobileClose" aria-label="Close Menu"><i data-lucide="x"></i></button>
         </div>
         <div class="mobile-menu-links">
@@ -85,9 +107,9 @@
 
             <!-- Header Section -->
             <header class="mb-header">
-                <div class="mb-logo">
-                    <i class="ph ph-compass"></i>
-                    <span>WanderAI</span>
+                <div class="mb-logo" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px;">
+                    <img src="assets/logo.png" alt="WanderAI" style="width: 48px; height: 48px; border-radius: 50%;">
+                    <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.8rem; color: var(--gray-900);">WanderAI</span>
                 </div>
                 <p class="subtitle">Brand Identity & Mood Board</p>
                 <div class="keywords">
@@ -251,6 +273,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast">Copied to clipboard!</div>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
     <script>lucide.createIcons();</script>
 </body>
