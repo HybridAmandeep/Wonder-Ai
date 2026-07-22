@@ -3166,6 +3166,10 @@ img {
         grid-template-columns: 1fr;
         padding-top: calc(var(--nav-height) + 24px);
     }
+    .sidebar-filters {
+        position: static;
+        margin-bottom: 24px;
+    }
 }
 .sidebar-filters {
     background: var(--white);
