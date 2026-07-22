@@ -2,7 +2,7 @@
  * WanderAI – Central Data Layer
  * Persisted in localStorage. Accessible globally via window.WanderData.
  */
-(function() {
+(function () {
     const DESTINATIONS = [
         {
             id: "santorini",
@@ -13,7 +13,7 @@
             rating: 4.9,
             reviewsCount: "2.4k",
             description: "Famous for its dramatic views, whitewashed houses with blue domes, active volcano, and stunning sunsets over the Aegean Sea.",
-            image: "images/mountain_landscape.png", // Base image, we can enrich with online source or fallbacks
+            image: "images/Santorini, Greece.png", // Base image, we can enrich with online source or fallbacks
             category: "beach",
             bestSeason: "May to October",
             coordinates: { lat: 36.4166, lon: 25.4324 },
@@ -28,7 +28,7 @@
             rating: 4.8,
             reviewsCount: "1.8k",
             description: "The historical heart of Japan, famous for its thousands of classical Buddhist temples, gardens, imperial palaces, Shinto shrines, and traditional wooden houses.",
-            image: "images/travel_photography.png",
+            image: "images/Kyoto, Japan.png",
             category: "culture",
             bestSeason: "October to November (Autumn) & April (Cherry Blossoms)",
             coordinates: { lat: 35.0116, lon: 135.7681 },
@@ -43,7 +43,7 @@
             rating: 4.9,
             reviewsCount: "3.1k",
             description: "A tropical nation in the Indian Ocean composed of 26 ring-shaped atolls, which are made up of more than 1,000 coral islands. Renowned for its beaches, blue lagoons, and extensive reefs.",
-            image: "images/airplane_map.png",
+            image: "images/Maldives, Maldives.png",
             category: "beach",
             bestSeason: "November to April",
             coordinates: { lat: 3.2028, lon: 73.2207 },
@@ -58,7 +58,7 @@
             rating: 4.7,
             reviewsCount: "1.2k",
             description: "Breathtaking mountain range offering world-class skiing, hiking, mountaineering, and scenic train rides through pristine valley landscapes and snow-capped peaks.",
-            image: "images/minimal_ui_illustration.png",
+            image: "images/Swiss Alps, Switzerland.png",
             category: "adventure",
             bestSeason: "December to March (Skiing) & June to September (Hiking)",
             coordinates: { lat: 46.8182, lon: 8.2275 },
@@ -73,7 +73,7 @@
             rating: 4.8,
             reviewsCount: "2.7k",
             description: "Known for its forested volcanic mountains, iconic rice paddies, beaches, coral reefs, and rich spiritual culture with thousands of unique temples.",
-            image: "images/travel_photography.png",
+            image: "images/Bali, Indonesia.png",
             category: "nature",
             bestSeason: "April to October",
             coordinates: { lat: -8.4095, lon: 115.1889 },
@@ -88,7 +88,7 @@
             rating: 4.8,
             reviewsCount: "1.5k",
             description: "Experience the magic of Iceland. Discover geothermal geysers, black sand beaches, majestic waterfalls, and view the aurora borealis dancing across the arctic sky.",
-            image: "images/mountain_landscape.png",
+            image: "images/Reykjavik & Northern Lights, Iceland.png",
             category: "adventure",
             bestSeason: "September to April",
             coordinates: { lat: 64.1466, lon: -21.9426 },
@@ -103,7 +103,7 @@
             rating: 4.9,
             reviewsCount: "1.1k",
             description: "A famous archaeological site in Jordan's southwestern desert. Dating to around 300 B.C., it was the capital of the Nabataean Kingdom. It contains tombs and temples carved into pink sandstone cliffs.",
-            image: "images/travel_photography.png",
+            image: "images/Petra Ancient City, Jordan.png",
             category: "culture",
             bestSeason: "March to May & September to November",
             coordinates: { lat: 30.3285, lon: 35.4444 },
@@ -118,7 +118,7 @@
             rating: 4.8,
             reviewsCount: "1.9k",
             description: "Canada's oldest national park, nestled in the Rocky Mountains. Famous for its surreal turquoise glacial lakes (Lake Louise, Moraine Lake), abundant wildlife, and outdoor pursuits.",
-            image: "images/minimal_ui_illustration.png",
+            image: "images/Banff National Park, Canada.png",
             category: "nature",
             bestSeason: "June to August (Lakes) & December to April (Skiing)",
             coordinates: { lat: 51.4968, lon: -115.9281 },
@@ -133,7 +133,7 @@
             rating: 4.7,
             reviewsCount: "2.1k",
             description: "Explore the ancient wonders of Egypt, including the Great Sphinx, the Giza Pyramids, and the vast historical treasures of the Grand Egyptian Museum on the banks of the Nile.",
-            image: "images/travel_photography.png",
+            image: "images/The Giza Pyramids & Cairo, Egypt.png",
             category: "culture",
             bestSeason: "October to April",
             coordinates: { lat: 30.0444, lon: 31.2357 },
@@ -148,7 +148,7 @@
             rating: 4.9,
             reviewsCount: "1.6k",
             description: "The adventure capital of the world, Queenstown sits on the shores of Lake Wakatipu against the dramatic Southern Alps. Popular for bungee jumping, jet boating, and skiing.",
-            image: "images/airplane_map.png",
+            image: "images/Queenstown Adventure, New Zealand.png",
             category: "adventure",
             bestSeason: "December to February (Summer) & June to August (Winter)",
             coordinates: { lat: -45.0312, lon: 168.6626 },
@@ -163,7 +163,7 @@
             rating: 4.8,
             reviewsCount: "2.3k",
             description: "A 50-kilometer stretch of coastline along the southern edge of Italy's Sorrentine Peninsula. Famous for its sheer cliffs, rugged shoreline, pastel-colored fishing villages, and terraced vineyards.",
-            image: "images/mountain_landscape.png",
+            image: "images/Amalfi Coast, Italy.png",
             category: "beach",
             bestSeason: "May to September",
             coordinates: { lat: 40.6331, lon: 14.6027 },
@@ -178,7 +178,7 @@
             rating: 4.9,
             reviewsCount: "1.4k",
             description: "A vast African savanna ecosystem renowned for its annual wildebeest migration, massive herds of zebras, gazelles, and the highest concentration of large predators in Africa.",
-            image: "images/travel_photography.png",
+            image: "images/Serengeti National Park, Tanzania.png",
             category: "nature",
             bestSeason: "January to March & June to October",
             coordinates: { lat: -2.1540, lon: 34.6857 },
@@ -208,16 +208,16 @@
     // Main API object exported to window
     const WanderData = {
         // Destination List
-        getDestinations: function() {
+        getDestinations: function () {
             return DESTINATIONS;
         },
 
-        getDestinationById: function(id) {
+        getDestinationById: function (id) {
             return DESTINATIONS.find(d => d.id === id) || null;
         },
 
         // User Auth
-        signup: function(email, password, name = '') {
+        signup: function (email, password, name = '') {
             const users = JSON.parse(localStorage.getItem('users'));
             if (users.some(u => u.email.toLowerCase() === email.toLowerCase())) {
                 return { success: false, message: "User with this email already exists." };
@@ -244,7 +244,7 @@
             return { success: true, user: newUser };
         },
 
-        login: function(email, password) {
+        login: function (email, password) {
             const users = JSON.parse(localStorage.getItem('users'));
             const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
             if (user) {
@@ -254,16 +254,16 @@
             return { success: false, message: "Invalid email or password." };
         },
 
-        logout: function() {
+        logout: function () {
             localStorage.setItem('currentUser', 'null');
         },
 
-        getCurrentUser: function() {
+        getCurrentUser: function () {
             const u = localStorage.getItem('currentUser');
             return u === 'null' ? null : JSON.parse(u);
         },
 
-        setCurrentUser: function(user) {
+        setCurrentUser: function (user) {
             localStorage.setItem('currentUser', JSON.stringify(user));
             // Sync user data to users database if fields changed
             if (user) {
@@ -276,7 +276,7 @@
             }
         },
 
-        updateUserPlan: function(planName) {
+        updateUserPlan: function (planName) {
             const user = this.getCurrentUser();
             if (user) {
                 user.plan = planName;
@@ -292,11 +292,11 @@
         },
 
         // Wishlist
-        getWishlist: function() {
+        getWishlist: function () {
             return JSON.parse(localStorage.getItem('wishlist'));
         },
 
-        toggleWishlist: function(destinationId) {
+        toggleWishlist: function (destinationId) {
             const wishlist = this.getWishlist();
             const index = wishlist.indexOf(destinationId);
             let added = false;
@@ -318,20 +318,20 @@
             return added;
         },
 
-        isWishlisted: function(destinationId) {
+        isWishlisted: function (destinationId) {
             const wishlist = this.getWishlist();
             return wishlist.includes(destinationId);
         },
 
         // Bookings
-        getBookings: function() {
+        getBookings: function () {
             const user = this.getCurrentUser();
             if (!user) return [];
             const allBookings = JSON.parse(localStorage.getItem('bookings'));
             return allBookings.filter(b => b.userId === user.id);
         },
 
-        addBooking: function(destinationId, startDate, endDate, guests, totalAmount, paymentDetails) {
+        addBooking: function (destinationId, startDate, endDate, guests, totalAmount, paymentDetails) {
             const user = this.getCurrentUser();
             if (!user) return { success: false, message: "User not logged in." };
 
@@ -366,11 +366,11 @@
         },
 
         // Notifications
-        getNotifications: function() {
+        getNotifications: function () {
             return JSON.parse(localStorage.getItem('notifications')) || [];
         },
 
-        addNotification: function(title, message, type = "info") {
+        addNotification: function (title, message, type = "info") {
             const notifications = this.getNotifications();
             notifications.unshift({
                 id: "notif_" + Math.random().toString(36).substr(2, 9),
@@ -381,31 +381,31 @@
                 type: type
             });
             localStorage.setItem('notifications', JSON.stringify(notifications));
-            
+
             // Dispatch custom event for UI updates
             window.dispatchEvent(new CustomEvent('wanderNotifUpdate'));
         },
 
-        markNotificationsAsRead: function() {
+        markNotificationsAsRead: function () {
             const notifications = this.getNotifications();
             notifications.forEach(n => n.unread = false);
             localStorage.setItem('notifications', JSON.stringify(notifications));
             window.dispatchEvent(new CustomEvent('wanderNotifUpdate'));
         },
 
-        clearNotifications: function() {
+        clearNotifications: function () {
             localStorage.setItem('notifications', JSON.stringify([]));
             window.dispatchEvent(new CustomEvent('wanderNotifUpdate'));
         },
 
         // Search engine
-        search: function(query, options = {}) {
+        search: function (query, options = {}) {
             let results = DESTINATIONS;
 
             if (query && query.trim() !== '') {
                 const q = query.toLowerCase().trim();
-                results = results.filter(d => 
-                    d.name.toLowerCase().includes(q) || 
+                results = results.filter(d =>
+                    d.name.toLowerCase().includes(q) ||
                     d.country.toLowerCase().includes(q) ||
                     d.description.toLowerCase().includes(q)
                 );
@@ -431,13 +431,13 @@
         },
 
         // Real-world Weather integration (OpenWeatherMap API + rich mock logic)
-        getWeather: async function(destinationName, lat, lon) {
+        getWeather: async function (destinationName, lat, lon) {
             try {
                 const API_KEY = localStorage.getItem('OWM_API_KEY') || '56de75c604b901594ccf4153b827dbd2';
-                
+
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`);
                 if (!response.ok) throw new Error("API Limit or configuration error");
-                
+
                 const data = await response.json();
                 return {
                     temp: Math.round(data.main.temp),
