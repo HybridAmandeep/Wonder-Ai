@@ -13,6 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Initialize Flatpickr for date inputs (Home page "When" field)
+    if (typeof flatpickr !== 'undefined') {
+        const whenInput = document.getElementById('whenInput');
+        if (whenInput) {
+            flatpickr(whenInput, {
+                dateFormat: "d/m/Y",
+                allowInput: true
+            });
+        }
+    }
+
     // =========================================
     // 1. AUTHENTICATION STATE SYNC (ALL PAGES)
     // =========================================
