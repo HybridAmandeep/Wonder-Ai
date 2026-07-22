@@ -3161,16 +3161,6 @@ img {
     margin: 0 auto;
     padding-bottom: 80px;
 }
-@media (max-width: 992px) {
-    .explore-main-container {
-        grid-template-columns: 1fr;
-        padding-top: calc(var(--nav-height) + 24px);
-    }
-    .sidebar-filters {
-        position: static;
-        margin-bottom: 24px;
-    }
-}
 .sidebar-filters {
     background: var(--white);
     border-radius: var(--radius-lg);
@@ -3180,6 +3170,16 @@ img {
     position: sticky;
     top: calc(var(--nav-height) + 24px);
     box-shadow: var(--shadow-sm);
+}
+@media (max-width: 992px) {
+    .explore-main-container {
+        grid-template-columns: 1fr;
+        padding-top: calc(var(--nav-height) + 24px);
+    }
+    .sidebar-filters {
+        position: static;
+        margin-bottom: 24px;
+    }
 }
 .filter-title {
     font-size: 1.1rem;
