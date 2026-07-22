@@ -817,19 +817,70 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btnText) btnText.style.display = 'none';
                 if (loader) loader.style.display = 'block';
 
-                // Initialize Razorpay
-                const options = {
-                    "key": "rzp_test_placeholder_key", // Placeholder key, can be changed later
-                    "amount": total * 100, // Amount is in currency subunits (paise)
-                    "currency": "INR", // Universal Indian currency
-                    "name": "WanderAI Travel",
-                    "description": `Booking for ${dest.name}`,
-                    "image": "images/icon-logo.png",
-                    "handler": function (response) {
+                // Open Custom Demo Payment Modal
+                const demoModal = document.getElementById('demoPaymentOverlay');
+                const demoTotalText = document.getElementById('demoPayTotalText');
+                if (demoModal && demoTotalText) {
+                    demoTotalText.textContent = `$${total.toLocaleString()}`;
+                    demoModal.classList.add('active');
+                }
+                
+                payBtn.disabled = false;
+                if (btnText) btnText.style.display = 'block';
+                if (loader) loader.style.display = 'none';
+            });
+
+            // Demo Payment Modal Logic
+            const demoModal = document.getElementById('demoPaymentOverlay');
+            const demoClose = document.getElementById('demoPaymentClose');
+            const demoTabs = document.querySelectorAll('.demo-payment-tab');
+            const demoSections = document.querySelectorAll('.demo-payment-section');
+            const demoConfirmBtn = document.getElementById('demoPayConfirmBtn');
+
+            if (demoClose) {
+                demoClose.addEventListener('click', () => {
+                    demoModal.classList.remove('active');
+                });
+            }
+
+            if (demoTabs) {
+                demoTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        demoTabs.forEach(t => t.classList.remove('active'));
+                        demoSections.forEach(s => s.classList.remove('active'));
+                        
+                        tab.classList.add('active');
+                        const targetId = `demoPay-${tab.dataset.payMethod}`;
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) targetSection.classList.add('active');
+                    });
+                });
+            }
+
+            if (demoConfirmBtn) {
+                demoConfirmBtn.addEventListener('click', () => {
+                    const btnText = demoConfirmBtn.querySelector('.btn-text');
+                    const loader = demoConfirmBtn.querySelector('.loader');
+                    
+                    demoConfirmBtn.disabled = true;
+                    if (btnText) btnText.style.display = 'none';
+                    if (loader) loader.style.display = 'block';
+
+                    // Simulate Bank Processing Delay
+                    setTimeout(() => {
+                        // Close Modal
+                        demoModal.classList.remove('active');
+
+                        // Reset button state for next time
+                        demoConfirmBtn.disabled = false;
+                        if (btnText) btnText.style.display = 'block';
+                        if (loader) loader.style.display = 'none';
+
                         // On Payment Success
+                        const method = document.querySelector('.demo-payment-tab.active').dataset.payMethod.toUpperCase();
                         window.WanderData.addBooking(destId, start, end, guests, total, { 
-                            payment_id: response.razorpay_payment_id,
-                            method: "Razorpay" 
+                            payment_id: "DEMO_" + Math.random().toString(36).substring(2, 9).toUpperCase(),
+                            method: method 
                         });
 
                         const bookingOverlay = document.getElementById('bookingOverlay');
@@ -841,34 +892,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             window.location.href = "dashboard.html";
                         }, 3500);
-                    },
-                    "prefill": {
-                        "name": billNameInput.value,
-                        "email": billEmailInput.value,
-                        "contact": billPhoneInput.value
-                    },
-                    "theme": {
-                        "color": "#3b82f6"
-                    }
-                };
-                
-                try {
-                    const rzp = new window.Razorpay(options);
-                    rzp.on('payment.failed', function (response){
-                        payBtn.disabled = false;
-                        if (btnText) btnText.style.display = 'block';
-                        if (loader) loader.style.display = 'none';
-                        alert("Payment Failed: " + response.error.description);
-                    });
-                    rzp.open();
-                } catch (err) {
-                    // Fallback if Razorpay script didn't load properly or key is bad
-                    alert("Razorpay checkout could not be loaded. Check API Key or Network.");
-                    payBtn.disabled = false;
-                    if (btnText) btnText.style.display = 'block';
-                    if (loader) loader.style.display = 'none';
-                }
-            });
+                    }, 2000);
+                });
+            }
         }
     }
 

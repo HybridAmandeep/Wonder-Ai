@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 
@@ -140,7 +139,7 @@
 
                         <!-- Proceed Button -->
                         <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; margin-top: 24px;" id="payBtn">
-                            <span class="btn-text">Pay securely with Razorpay</span>
+                            <span class="btn-text">Proceed to Payment</span>
                             <span class="loader" style="display: none;"></span>
                         </button>
                     </form>
@@ -184,11 +183,72 @@
                         <span>Taxes & Service Fees:</span>
                         <span id="summaryTaxes">$0</span>
                     </div>
-
-                    <div class="checkout-summary-item total">
-                        <span>Total Price:</span>
+                    
+                    <div class="checkout-summary-item" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--gray-200); font-size: 1.2rem; font-weight: 700; color: var(--gray-900);">
+                        <span>Total:</span>
                         <span id="summaryTotal">$0</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Demo Payment Gateway Modal -->
+    <div class="demo-payment-overlay" id="demoPaymentOverlay">
+        <div class="demo-payment-modal">
+            <div class="demo-payment-header">
+                <h3><i data-lucide="shield-check" style="color: var(--primary); margin-right: 8px;"></i>WanderAI Secure Pay</h3>
+                <button class="demo-payment-close" id="demoPaymentClose"><i data-lucide="x"></i></button>
+            </div>
+            
+            <div class="demo-payment-tabs">
+                <button class="demo-payment-tab active" data-pay-method="upi">UPI</button>
+                <button class="demo-payment-tab" data-pay-method="card">Card</button>
+            </div>
+
+            <div class="demo-payment-body">
+                <!-- UPI Section -->
+                <div class="demo-payment-section active" id="demoPay-upi">
+                    <p style="font-size: 0.9rem; color: var(--gray-500); margin-bottom: 16px;">Pay easily using any UPI app</p>
+                    <div class="input-group">
+                        <label>Enter UPI ID / VPA</label>
+                        <input type="text" placeholder="example@upi" id="demoUpiId">
+                    </div>
+                    <div style="text-align: center; margin: 24px 0;">
+                        <span style="color: var(--gray-400); font-size: 0.8rem;">OR SCAN QR</span>
+                        <div style="width: 150px; height: 150px; background: var(--gray-100); margin: 16px auto; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--gray-300);">
+                            <i data-lucide="qr-code" style="width: 64px; height: 64px; color: var(--gray-400);"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Section -->
+                <div class="demo-payment-section" id="demoPay-card">
+                    <p style="font-size: 0.9rem; color: var(--gray-500); margin-bottom: 16px;">Enter your debit or credit card details</p>
+                    <div class="input-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="4111 2222 3333 4444" id="demoCardNum">
+                    </div>
+                    <div class="payment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="input-group">
+                            <label>Expiry</label>
+                            <input type="text" placeholder="MM/YY" id="demoCardExp">
+                        </div>
+                        <div class="input-group">
+                            <label>CVV</label>
+                            <input type="password" placeholder="123" id="demoCardCvv">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-payment-footer">
+                <button class="btn-primary" id="demoPayConfirmBtn" style="width: 100%; justify-content: center; height: 48px;">
+                    <span class="btn-text">Pay <span id="demoPayTotalText">$0</span></span>
+                    <span class="loader" style="display: none; width: 20px; height: 20px; border-width: 2px;"></span>
+                </button>
+                <div style="text-align: center; margin-top: 16px; font-size: 0.75rem; color: var(--gray-400); display: flex; align-items: center; justify-content: center; gap: 4px;">
+                    <i data-lucide="lock" style="width: 12px; height: 12px;"></i> 100% Secure Transaction (Demo)
                 </div>
             </div>
         </div>

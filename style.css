@@ -47,7 +47,7 @@
     /* Spacing */
     --nav-height: 80px;
     --mobile-nav-height: 72px;
-    --container-max: 100%;
+    --container-max: 1440px;
     --section-padding: 120px;
 
     /* Shadows */
@@ -3403,5 +3403,102 @@ img {
     justify-content: center;
     padding: 40px 24px;
     background: var(--gray-50);
+}
+
+/* Demo Payment Gateway UI */
+.demo-payment-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    backdrop-filter: blur(4px);
+    transition: all var(--transition-base);
+}
+.demo-payment-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.demo-payment-modal {
+    background: var(--white);
+    width: 90%;
+    max-width: 400px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-2xl);
+    overflow: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all var(--transition-base);
+}
+.demo-payment-overlay.active .demo-payment-modal {
+    transform: translateY(0) scale(1);
+}
+.demo-payment-header {
+    padding: 24px;
+    background: var(--gray-50);
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.demo-payment-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gray-900);
+    display: flex;
+    align-items: center;
+}
+.demo-payment-close {
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+.demo-payment-close:hover {
+    color: var(--gray-900);
+}
+.demo-payment-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--gray-200);
+}
+.demo-payment-tab {
+    flex: 1;
+    padding: 16px;
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.demo-payment-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: rgba(14, 165, 233, 0.05);
+}
+.demo-payment-body {
+    padding: 24px;
+    min-height: 250px;
+}
+.demo-payment-section {
+    display: none;
+    animation: fadeIn var(--transition-fast) ease-out forwards;
+}
+.demo-payment-section.active {
+    display: block;
+}
+.demo-payment-footer {
+    padding: 24px;
+    background: var(--gray-50);
+    border-top: 1px solid var(--gray-200);
 }
 
