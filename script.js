@@ -751,9 +751,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutPaymentForm = document.getElementById('checkoutPaymentForm');
     const billNameInput = document.getElementById('billName');
     const billEmailInput = document.getElementById('billEmail');
-    const cardNumInput = document.getElementById('cardNum');
-    const cardExpiryInput = document.getElementById('cardExpiry');
-    const cardCvvInput = document.getElementById('cardCvv');
+    const billPhoneInput = document.getElementById('billPhone');
 
     if (checkoutPaymentForm && window.WanderData) {
         // Enforce user logged in
@@ -803,32 +801,13 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('summaryTaxes').textContent = `$${taxes.toLocaleString()}`;
             document.getElementById('summaryTotal').textContent = `$${total.toLocaleString()}`;
 
-            // Card inputs formatting helpers
-            if (cardNumInput) {
-                cardNumInput.addEventListener('input', () => {
-                    cardNumInput.value = cardNumInput.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
-                });
-            }
-            if (cardExpiryInput) {
-                cardExpiryInput.addEventListener('input', () => {
-                    let val = cardExpiryInput.value.replace(/\D/g, '');
-                    if (val.length > 2) {
-                        cardExpiryInput.value = val.substr(0, 2) + '/' + val.substr(2, 2);
-                    } else {
-                        cardExpiryInput.value = val;
-                    }
-                });
-            }
-
-            // Form Submit Simulation
+            // Form Submit with Razorpay
             checkoutPaymentForm.addEventListener('submit', (e) => {
                 e.preventDefault();
 
                 // Simple check
                 if (!billNameInput.value) return;
-                if (!cardNumInput.value || cardNumInput.value.length < 19) return;
-                if (!cardExpiryInput.value || cardExpiryInput.value.length < 5) return;
-                if (!cardCvvInput.value || cardCvvInput.value.length < 3) return;
+                if (!billPhoneInput || !billPhoneInput.value) return;
 
                 const payBtn = document.getElementById('payBtn');
                 const btnText = payBtn.querySelector('.btn-text');
@@ -838,22 +817,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btnText) btnText.style.display = 'none';
                 if (loader) loader.style.display = 'block';
 
-                setTimeout(() => {
-                    // Record booking
-                    window.WanderData.addBooking(destId, start, end, guests, total, { card: cardNumInput.value });
+                // Initialize Razorpay
+                const options = {
+                    "key": "rzp_test_placeholder_key", // Placeholder key, can be changed later
+                    "amount": total * 100, // Amount is in currency subunits (paise)
+                    "currency": "INR", // Universal Indian currency
+                    "name": "WanderAI Travel",
+                    "description": `Booking for ${dest.name}`,
+                    "image": "images/icon-logo.png",
+                    "handler": function (response) {
+                        // On Payment Success
+                        window.WanderData.addBooking(destId, start, end, guests, total, { 
+                            payment_id: response.razorpay_payment_id,
+                            method: "Razorpay" 
+                        });
 
-                    // Launch success
-                    const bookingOverlay = document.getElementById('bookingOverlay');
-                    const bookingSuccessToast = document.getElementById('bookingSuccessToast');
+                        const bookingOverlay = document.getElementById('bookingOverlay');
+                        const bookingSuccessToast = document.getElementById('bookingSuccessToast');
 
-                    if (bookingOverlay) bookingOverlay.classList.add('active');
-                    if (bookingSuccessToast) bookingSuccessToast.classList.add('active');
+                        if (bookingOverlay) bookingOverlay.classList.add('active');
+                        if (bookingSuccessToast) bookingSuccessToast.classList.add('active');
 
-                    setTimeout(() => {
-                        window.location.href = "dashboard.html";
-                    }, 3500);
-
-                }, 2000);
+                        setTimeout(() => {
+                            window.location.href = "dashboard.html";
+                        }, 3500);
+                    },
+                    "prefill": {
+                        "name": billNameInput.value,
+                        "email": billEmailInput.value,
+                        "contact": billPhoneInput.value
+                    },
+                    "theme": {
+                        "color": "#3b82f6"
+                    }
+                };
+                
+                try {
+                    const rzp = new window.Razorpay(options);
+                    rzp.on('payment.failed', function (response){
+                        payBtn.disabled = false;
+                        if (btnText) btnText.style.display = 'block';
+                        if (loader) loader.style.display = 'none';
+                        alert("Payment Failed: " + response.error.description);
+                    });
+                    rzp.open();
+                } catch (err) {
+                    // Fallback if Razorpay script didn't load properly or key is bad
+                    alert("Razorpay checkout could not be loaded. Check API Key or Network.");
+                    payBtn.disabled = false;
+                    if (btnText) btnText.style.display = 'block';
+                    if (loader) loader.style.display = 'none';
+                }
             });
         }
     }
