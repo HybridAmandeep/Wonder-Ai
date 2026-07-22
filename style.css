@@ -3170,6 +3170,7 @@ img {
     position: sticky;
     top: calc(var(--nav-height) + 24px);
     box-shadow: var(--shadow-sm);
+    z-index: 10;
 }
 @media (max-width: 992px) {
     .explore-main-container {
@@ -3177,7 +3178,6 @@ img {
         padding-top: calc(var(--nav-height) + 24px);
     }
     .sidebar-filters {
-        position: static;
         margin-bottom: 24px;
     }
 }
